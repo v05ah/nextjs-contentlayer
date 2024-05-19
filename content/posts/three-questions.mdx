@@ -1,0 +1,55 @@
+---
+title: Three Questions
+description: Answers to question 2, 3 and 4
+date: "2024-05-19"
+---
+
+>What do you want to learn or do more of at work?
+
+Good question. I want to learn more programming and gain more coding knowledge. 
+I have been a support agent for quite a long time so I feel like I know how to give a good customer experience, but I would like to continue learning more programming languages. 
+
+>Describe how you solved a challenge or technical issue that you faced in a previous role
+>(preferably in a previous support role). How did you determine that your solution was
+>successful?
+
+I trust my gut feeling a lot. If I feel like something is wrong, I will speak up. A good example of this was when we had an attack at one of my jobs.
+I logged in to Zendesk as usual in the morning and noticed that we had more emails than usual (not a crazy amount but more than usual). This was instantly a red flag for me.
+This was a Friday in December and there have been no big deployments recently, so nothing should have broken, I thought to myself. 
+When I started going through the tickets I noticed that all of these customers had names that seemed to come from the same country or area of the world (a country I know we don't have a lot of customers in)
+The second thing I noticed was that the descriptions were all similar. They all said that they were not aware of registering with us. 
+When I went through the emails in our backend tool I noticed that they were all registered but no one had entered the verification code.
+
+After this, I instantly called up our infra on-call and told him what I had found. He dismissed me and said "They probably just forgot they registered" but I was sure that was not the case.
+I kept him on the phone and created a few graphs in Sysdig which showed that we currently were registering 1700 clients a minute. This never happens. 
+This made him believe that I was right, cause I used logs and stats to show it. All because of my gut feeling. 
+
+While we were both trying to find the fault, I found what list dump he used to register these accounts. We managed to stop the registrations quickly and all before security had even answered their on-call page.
+
+
+>When would you choose to use Edge Functions, Serverless Functions, or Edge
+>Middleware with Vercel?
+
+Edge Functions uses the Edge runtime, which is great if you only want to run lightweight Javascript commands. They are more effective for customers than serverless functions as they often use fewer resources. 
+Serverless functions use the Node.js runtime, so you get the normal Node.js toolset, but it requires more resources and can therefore be more expensive.
+
+Edge Middleware is great if you want to do A/B testing (making customers see different pages and see how they interact with them) or even a redirect.
+One cool thing I saw in the Vercel resources is that you can set for example a paywall here, which means that the customer will not be able to see any content.
+Quite often on the web, you can see something for a second before there's a popup, but Edge Middleware prevents this from happening.  
+
+>Imagine a customer writes in requesting help with a build issue on a framework or
+>technology that you've not seen before. How would you begin troubleshooting this and
+>what questions would you ask the customer to understand the situation better?
+
+This is something that should happen a lot when you work in support, cause I think it makes work more fun. 
+To give great support, you need to know what questions to ask, and in my opinion, you can only give really good troubleshooting help once you have tried it yourself.
+Usually, I will start by deploying the same thing that the customer is using, so I can see it in front of me and test it myself.
+
+Questions that are always good in support:
+- Has this worked for you before?/Has it ever worked?
+- If yes, when did it stop working? (if you have an approximate time or date, you can easily look at recent deployments and find the issue that way)
+- What are you trying to achieve?  What would you like this project to do when it's finished? (knowing the customer's expectations make it easier to understand)
+
+It's important to not be worried to ask the customer if there's something you don't understand. Don't understand exactly what their function is doing in that script? Ask them! 
+We are not ChatGPT or robots that know everything, but we learn very quickly and we are eager to try new things. 
+
